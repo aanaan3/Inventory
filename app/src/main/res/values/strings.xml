@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Inventory</string>
+
+    <string name="action_delete_all_entries">Delete All Items and Supplier</string>
+
+    <string name="empty_view_subtitle_text">Get started by adding a item</string>
+    <string name="empty_view_title_text">Inventory</string>
+
+    <string name="select_supplier">Select Supplier</string>
+    <string name="add_new_supplier">Add New Supplier...</string>
+
+    <string name="add_new_supplier_name">Add New Supplier Name</string>
+    <string name="new_supplier">New Supplier</string>
+    <string name="insert_supplier_name_failed">Insert Supplier Name failed</string>
+    <string name="supplier_name_inserted">Supplier Name Inserted:</string>
+
+    <string name="insert_item_failed">insert item failed</string>
+    <string name="insert_item_successful">insert item successful</string>
+    <string name="insert_supplier_failed">insert supplier failed</string>
+    <string name="insert_supplier_successful">insert supplier successful</string>
+    <string name="update_supplier_failed">update supplier failed</string>
+    <string name="update_supplier_successful">update supplier successful</string>
+    <string name="update_item_failed">update item failed</string>
+    <string name="update_item_successful">update item successful</string>
+
+    <string name="enter_valid_item_name">Enter Valid Item Name</string>
+    <string name="enter_valid_item_price">Enter Valid Item Price</string>
+    <string name="enter_valid_item_quantity">Enter Valid Item Quantity</string>
+    <string name="enter_valid_supplier_phone">Enter Valid Supplier Phone</string>
+    <string name="enter_valid_supplier_email">Enter Valid Supplier Email</string>
+    <string name="upload_item_image">Upload Item Image</string>
+    <string name="select_supplier_name">Select Supplier Name</string>
+
+    <string name="order_require_phone_number">order require phone number</string>
+    <string name="order_require_email">order require email</string>
+
+    <string name="item_deleted">item deleted</string>
+    <string name="delete_item_failed">delete item failed</string>
+    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
+
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep Editing</string>
+
+    <string name="decrease_quantity_failed">decrease quantity failed</string>
+    <string name="decrease_quantity_successful">decrease quantity successful</string>
+</resources>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditorActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout style="@style/SubLinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Item Name" />
+
+            <EditText
+                android:id="@+id/edit_item_name"
+                style="@style/EditTextStyle"
+                android:hint="Name"
+                android:inputType="textCapWords" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/SubLinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Item Price" />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2">
+
+                <EditText
+                    android:id="@+id/edit_item_price"
+                    style="@style/EditTextStyle"
+                    android:layout_width="match_parent"
+                    android:hint="Price"
+                    android:inputType="number" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingTop="16dp"
+                    android:paddingRight="16dp"
+                    android:text="$" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/SubLinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Quantity" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/increase_quantity"
+                    style="@style/ButtonStyle"
+                    android:onClick="increase"
+                    android:text="+" />
+
+                <EditText
+                    android:id="@+id/edit_item_quantity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:inputType="number"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:text="0"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/decrement_quantity"
+                    style="@style/ButtonStyle"
+                    android:onClick="decrease"
+                    android:text="-" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout style="@style/SubLinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Supplier Name" />
+
+            <Spinner
+                android:id="@+id/spinner_supplier_name"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="2"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/SubLinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Supplier Phone" />
+
+            <EditText
+                android:id="@+id/edit_supplier_phone"
+                style="@style/EditTextStyle"
+                android:hint="Phone"
+                android:inputType="phone" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/SubLinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyle"
+                android:text="Supplier Email" />
+
+            <EditText
+                android:id="@+id/edit_supplier_email"
+                style="@style/EditTextStyle"
+                android:hint="Email"
+                android:inputType="textEmailAddress" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/order_more"
+                style="@style/ButtonStyle"
+                android:onClick="orderMore"
+                android:text="Order More" />
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_phone"
+                    style="@style/RadioButtonStyle"
+                    android:text="Phone"
+                    android:textSize="18sp" />
+
+                <RadioButton
+                    android:id="@+id/radio_email"
+                    style="@style/RadioButtonStyle"
+                    android:text="Email"
+                    android:textSize="18sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout style="@style/SubLinearLayoutStyle">
+
+            <Button
+                android:id="@+id/upload_image"
+                style="@style/ButtonStyle"
+                android:onClick="uploadImage"
+                android:text="Upload Image" />
+
+            <ImageView
+                android:id="@+id/item_image_view"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="2" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
