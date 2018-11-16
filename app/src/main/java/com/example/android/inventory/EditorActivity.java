@@ -362,41 +362,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         return check;
     }
 
-    private boolean duplicateEmail(String email) {
-
-        Boolean checkEmail = false;
-
-        String[] projection = {
-                SupplierEntry.COLUMN_SUPPLIER_EMAIL,
-        };
-
-        String selection = SupplierEntry.COLUMN_SUPPLIER_EMAIL + " =?";
-        String[] selectionArgs = { email };
-
-        Cursor cursor = getContentResolver().query(
-                SupplierEntry.CONTENT_URI,   // The content URI of the words table
-                projection,             // The columns to return for each row
-                selection,                   // Selection criteria
-                selectionArgs,                   // Selection criteria
-                null);                  // The sort order for the returned rows
-
-        String currentEmail = null;
-
-        try{
-            int emailColumnIndex = cursor.getColumnIndex(SupplierEntry.COLUMN_SUPPLIER_EMAIL);
-
-            while (cursor.moveToNext()) {
-                currentEmail = cursor.getString(emailColumnIndex);
-            }
-
-        }finally{cursor.close();}
-
-        if (!currentEmail.isEmpty()){
-            checkEmail = true;
-        }
-        return checkEmail;
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu options from the res/menu/menu_editor.xml file.
@@ -517,8 +482,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             mItemImageView.setImageURI(Uri.parse(image));
             imageUri = Uri.parse(image).toString();
 
-            //currentQuantity = Integer.parseInt(mQuantityEditText.getText().toString().trim());
-
             // Based on supplierId column in item table, will get supplier details.
             loadSupplier(supplierId);
         }
@@ -532,7 +495,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mQuantityEditText.setText("");
         mEmailEditText.setText("");
         mPhoneEditText.setText("");
-        //mSpinner.setSelection(0);
     }
 
     // Get supplier details.
@@ -559,7 +521,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                 null);                  // The sort order for the returned rows
 
         int currentId = 0;
-        String currentName = null;
         String currentEmail = null;
         String currentPhone = null;
 
@@ -571,7 +532,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
             if (cursor.moveToFirst()) {
                 currentId = cursor.getInt(idColumnIndex);
-                currentName = cursor.getString(nameColumnIndex);
                 currentEmail = cursor.getString(emailColumnIndex);
                 currentPhone = cursor.getString(phoneColumnIndex);
             }
@@ -579,14 +539,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             mSpinner.setSelection(currentId+1);
             mEmailEditText.setText(currentEmail);
             mPhoneEditText.setText(currentPhone);
-
-            /*
-            for (int i = 0; i < supplierNameArrayList.size(); i++){
-                if (supplierNameArrayList.get(i).equals(currentName)){
-                    mSpinner.setSelection(i);
-                    break;
-                }
-            } */
 
         }finally{cursor.close();}
     }
@@ -596,8 +548,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private void getSupplierDetails(int position){
 
         String[] projection = {
-                BaseColumns._ID,
-                SupplierEntry.COLUMN_SUPPLIER_NAME,
                 SupplierEntry.COLUMN_SUPPLIER_EMAIL,
                 SupplierEntry.COLUMN_SUPPLIER_PHONE
         };
@@ -701,8 +651,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }else {
             intent.setAction(Intent.ACTION_GET_CONTENT);
         }
-        //intent.addCategory(Intent.CATEGORY_OPENABLE);
-        //intent.setDataAndType(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
+
         intent.setType("image/*");
         mItemImageView.setImageMatrix(new Matrix());
         mItemImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);

@@ -60,41 +60,6 @@ public class ItemsProvider extends ContentProvider {
 
         switch (match) {
             case ITEMS:
-
-
-                //SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
-
-                //HashMap<String, String> projectionMap = new HashMap<String, String>();
-                //projectionMap.put(ItemsEntry._ID, ItemsEntry._ID +"id AS " + ItemsEntry._ID);
-                //projectionMap.put(ItemsEntry.COLUMN_ITEMS_NAME, ItemsEntry.COLUMN_ITEMS_NAME);
-                //projectionMap.put(ItemsEntry.COLUMN_SUPPLIER_ID, ItemsEntry.COLUMN_SUPPLIER_ID);
-                //projectionMap.put(SupplierEntry._ID, SupplierEntry._ID + " as supplier");
-
-
-                //qb.setTables("(SELECT v_items._id FROM v_items LEFT OUTER JOIN v_suppliers ON (v_suppliers.suppliers_id = v_items.Supplier_id))");
-                //qb.appendWhere("v_items.Supplier_id = ?");
-
-                //qb.setProjectionMap(projectionMap);
-
-
-                /*
-                qb.setTables("(SELECT " + ItemsEntry.TABLE_NAME + "." + ItemsEntry._ID +  "," +
-                        ItemsEntry.TABLE_NAME +"." + ItemsEntry.COLUMN_ITEMS_NAME + "," +
-                        ItemsEntry.TABLE_NAME +"." + ItemsEntry.COLUMN_ITEMS_PRICE + "," +
-                        ItemsEntry.TABLE_NAME +"." + ItemsEntry.COLUMN_ITEMS_QUANTITY + "," +
-                        ItemsEntry.TABLE_NAME +"." + ItemsEntry.COLUMN_ITEMS_SUPPLIER_ID + "," +
-                        SupplierEntry.TABLE_NAME + "." + SupplierEntry.COLUMN_SUPPLIER_EMAIL +
-                        " FROM " + ItemsEntry.TABLE_NAME +
-                        " LEFT OUTER JOIN " + SupplierEntry.TABLE_NAME  + " ON " +
-                        ItemsEntry.TABLE_NAME +"." + ItemsEntry.COLUMN_ITEMS_SUPPLIER_ID + " = " +
-                        SupplierEntry.TABLE_NAME  + "." + SupplierEntry.COLUMN_SUPPLIER_EMAIL + ")");
-*/
-
-                //qb.appendWhere(ItemsEntry.COLUMN_ITEMS_SUPPLIER_ID + " = " + SupplierEntry.COLUMN_SUPPLIER_EMAIL );
-
-                //cursor = qb.query(database, projection, null, null,
-                  //      null, null, null);
-
                 cursor = database.query(ItemsEntry.TABLE_NAME, projection, selection, selectionArgs,
                         null, null, sortOrder);
                 break;

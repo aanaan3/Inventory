@@ -26,6 +26,7 @@ public class ItemsDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        // Execute the SQL statement Drop
         db.execSQL("DROP TABLE IF EXISTS "+ItemsEntry.TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS "+SupplierEntry.TABLE_NAME);
 
@@ -49,27 +50,9 @@ public class ItemsDbHelper extends SQLiteOpenHelper {
                 + SupplierEntry.COLUMN_SUPPLIER_EMAIL + " TEXT NOT NULL, "
                 + SupplierEntry.COLUMN_SUPPLIER_PHONE + " TEXT NOT NULL);";
 
-        //UNIQUE
-
-        String SQL_CREATE_ITEMS_TABLE_VIEW = "CREATE VIEW " + "v_items" + " AS SELECT " +
-                ItemsEntry._ID + " AS '_id', " +
-                ItemsEntry.COLUMN_ITEMS_NAME + " AS 'item_name', " +
-                ItemsEntry.COLUMN_ITEMS_PRICE + " AS 'item_price', " +
-                ItemsEntry.COLUMN_ITEMS_SUPPLIER_ID + " AS 'item_email'";
-
-        String SQL_CREATE__SUPPLIERS_VIEW = "CREATE VIEW " + "v_suppliers" + " AS SELECT " +
-                SupplierEntry._ID + " AS 'suppliers_id', " +
-                SupplierEntry.COLUMN_SUPPLIER_NAME + " AS 'suppliers_name', " +
-                SupplierEntry.COLUMN_SUPPLIER_EMAIL + " AS 'suppliers_email'," +
-                SupplierEntry.COLUMN_SUPPLIER_PHONE + " AS 'suppliers_phone'";
-
-        // Execute the SQL statement.
-        db.execSQL("DROP TABLE IF EXISTS "+ItemsEntry.TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS "+SupplierEntry.TABLE_NAME);
+        // Execute the SQL statement Create
         db.execSQL(SQL_CREATE_ITEMS_TABLE);
         db.execSQL(SQL_CREATE_SUPPLIER_TABLE);
-        //db.execSQL(SQL_CREATE_ITEMS_TABLE_VIEW);
-        //db.execSQL(SQL_CREATE__SUPPLIERS_VIEW);
     }
 
     //This is called when the database needs to be upgraded.
@@ -85,12 +68,5 @@ public class ItemsDbHelper extends SQLiteOpenHelper {
         } else {
         db.execSQL("PRAGMA foreign_keys=ON");
         }
-    }
-
-    @Override
-    public synchronized void close() {
-        super.close();
-        //db.execSQL("DROP TABLE IF EXISTS "+ItemsEntry.TABLE_NAME);
-        //db.execSQL("DROP TABLE IF EXISTS "+SupplierEntry.TABLE_NAME);
     }
 }
