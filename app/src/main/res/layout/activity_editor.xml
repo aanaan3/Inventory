@@ -22,6 +22,7 @@
             <EditText
                 android:id="@+id/edit_item_name"
                 style="@style/EditTextStyle"
+                android:layout_height="48dp"
                 android:hint="Name"
                 android:inputType="textCapWords" />
         </LinearLayout>
@@ -41,6 +42,7 @@
                     android:id="@+id/edit_item_price"
                     style="@style/EditTextStyle"
                     android:layout_width="match_parent"
+                    android:layout_height="48dp"
                     android:hint="Price"
                     android:inputType="number" />
 
@@ -69,13 +71,14 @@
                 <Button
                     android:id="@+id/increase_quantity"
                     style="@style/ButtonStyle"
+                    android:layout_height="48dp"
                     android:onClick="increase"
                     android:text="+" />
 
                 <EditText
                     android:id="@+id/edit_item_quantity"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:inputType="number"
@@ -87,6 +90,7 @@
                 <Button
                     android:id="@+id/decrement_quantity"
                     style="@style/ButtonStyle"
+                    android:layout_height="48dp"
                     android:onClick="decrease"
                     android:text="-" />
             </LinearLayout>
@@ -103,7 +107,8 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="2"
-                android:spinnerMode="dropdown" />
+                android:spinnerMode="dropdown"
+                android:contentDescription="Supplier Name"/>
         </LinearLayout>
 
         <LinearLayout style="@style/SubLinearLayoutStyle">
@@ -115,6 +120,7 @@
             <EditText
                 android:id="@+id/edit_supplier_phone"
                 style="@style/EditTextStyle"
+                android:layout_height="48dp"
                 android:hint="Phone"
                 android:inputType="phone" />
         </LinearLayout>
@@ -128,6 +134,7 @@
             <EditText
                 android:id="@+id/edit_supplier_email"
                 style="@style/EditTextStyle"
+                android:layout_height="48dp"
                 android:hint="Email"
                 android:inputType="textEmailAddress" />
         </LinearLayout>
@@ -140,13 +147,14 @@
             <Button
                 android:id="@+id/order_more"
                 style="@style/ButtonStyle"
+                android:layout_height="48dp"
                 android:onClick="orderMore"
                 android:text="Order More" />
 
             <RadioGroup
                 android:id="@+id/radio_group"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="48dp"
                 android:layout_weight="2"
                 android:gravity="center"
                 android:orientation="horizontal">
@@ -154,12 +162,14 @@
                 <RadioButton
                     android:id="@+id/radio_phone"
                     style="@style/RadioButtonStyle"
+                    android:layout_height="48dp"
                     android:text="Phone"
                     android:textSize="18sp" />
 
                 <RadioButton
                     android:id="@+id/radio_email"
                     style="@style/RadioButtonStyle"
+                    android:layout_height="48dp"
                     android:text="Email"
                     android:textSize="18sp" />
             </RadioGroup>
@@ -170,6 +180,7 @@
             <Button
                 android:id="@+id/upload_image"
                 style="@style/ButtonStyle"
+                android:layout_height="48dp"
                 android:onClick="uploadImage"
                 android:text="Upload Image" />
 
