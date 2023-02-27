@@ -17,8 +17,6 @@ import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.BaseColumns;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +30,9 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 
 import com.example.android.inventory.data.ItemsContract.ItemsEntry;
 import com.example.android.inventory.data.ItemsContract.SupplierEntry;
