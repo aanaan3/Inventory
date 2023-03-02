@@ -31,6 +31,9 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
 
@@ -94,6 +97,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
     };
 
+    ActivityResultLauncher<String> activityResultLauncher;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +146,28 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mItemImageView.setOnTouchListener(mTouchListener);
 
         setupSpinner();
+
+        activityResultLauncher = registerForActivityResult(
+                        new ActivityResultContracts.GetContent(),
+                        new ActivityResultCallback<Uri>() {
+                            @Override
+                            public void onActivityResult(Uri result) {
+                                if (result == null) {
+                                    Toast.makeText(getBaseContext(),"error upload image",Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+
+                                try {
+                                    InputStream inputStream =
+                                            getBaseContext().getContentResolver().openInputStream(result);
+                                    Bitmap bmp = BitmapFactory.decodeStream(inputStream);
+                                    mItemImageView.setImageBitmap(bmp);
+                                    imageUri = result.toString();
+                                } catch (FileNotFoundException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
     }
 
     //Setup the dropdown spinner that allows the user to insert and select the name of the supplier.
@@ -646,17 +673,21 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     // This method is called when the upload image button is clicked.
     public void uploadImage(View view) {
 
-        Intent intent = new Intent();
-        if (Build.VERSION.SDK_INT > 19) {
-            intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-        }else {
-            intent.setAction(Intent.ACTION_GET_CONTENT);
-        }
+        activityResultLauncher.launch("image/*");
 
-        intent.setType("image/*");
-        mItemImageView.setImageMatrix(new Matrix());
-        mItemImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-        startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE);
+//        Intent intent = new Intent();
+//        if (Build.VERSION.SDK_INT > 21) {
+//            intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+//        }else {
+//            intent.setAction(Intent.ACTION_GET_CONTENT);
+//        }
+//
+//        intent.setType("image/*");
+//
+//        mItemImageView.setImageMatrix(new Matrix());
+//        mItemImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+//        startActivityForResult(Intent.createChooser(intent, "Select Image"), PICK_IMAGE);
+
     }
 
     @Override
